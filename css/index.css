@@ -7,6 +7,11 @@ div.title {
 }
 
 #mapid { 
-    height: 50em;
-    width: 50em;
+    height: 55em;
+    width: 55em;
+}
+
+#proportions { 
+    height: 30em;
+    width: 30em;
 }

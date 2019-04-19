@@ -38,14 +38,14 @@ const fontSize = 16;
 
 const legalDates = [... new Set(consumptions.map(x => x.date))];
 const categories = [... new Set(consumptions.map(x => x.sector))];
-const palette = d3.scale.category20().domain(categories);
+const palette = d3.scale.category10().domain(categories);
 
 var svg = d3.select("#color-ref").append("svg").attr("width", refWidth).attr("height", eachRefHeight*categories.length);
 
 const expenses = consumptions.map(x => x.amount);
 const scale = d3.scale.log().base(10).domain([Math.min(...expenses), Math.max(...expenses)]).range([0, 500]);
 
-
+/*
 svg.selectAll("rect")
     .data(categories)
     .enter().append("rect")
@@ -62,6 +62,25 @@ svg.selectAll("text")
     .attr("x", (d, i) => 10 )
     .style("fill" , "white")
     .text(function(d) { return d; });
+*/
+
+function consumptionsByType(d){
+
+    $("#proportions").html('');
+
+    d3plus.viz()
+    .container("#proportions")
+    .data(consumptions.filter(x => x.date == d))
+    .type("tree_map")
+    .id(["sector"])
+    .size("amount")
+    .color(d => palette(d.sector))
+    .legend({"size": 50})
+    .font({ "family": "sans-serif" })
+    .draw()
+
+}
+
 
 
 var timeoutIDs = [];
@@ -85,6 +104,8 @@ function placeMarkers(d){
             radius: 0.5
         }).addTo(layerGroup)
     });
+
+    consumptionsByType(d);
 
     var currentDate = consumptions.filter(x => x.date == d);
 
@@ -170,4 +191,5 @@ function buttonFastforwardPress(){
 
 $(function() {
     setDateText();
+    placeMarkers(legalDates[currDate]);
 });
