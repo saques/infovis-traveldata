@@ -1,0 +1,12 @@
+div.title {
+    padding: 2.5em 2.5em;
+}
+
+#player {
+    padding-bottom: 0.5em;
+}
+
+#mapid { 
+    height: 50em;
+    width: 50em;
+}
