@@ -200,7 +200,7 @@ function buttonStopPress(){
 
 function buttonForwardPress(){
     stopAndClearCircles();
-    if(currDate < legalDates.length){
+    if(currDate < legalDates.length - 1){
         currDate++;
         setDateText();
     }
