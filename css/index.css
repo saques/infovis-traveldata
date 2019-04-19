@@ -11,7 +11,18 @@ div.title {
     width: 55em;
 }
 
+#date {
+    padding-top: 0.5em;
+}
+
 #proportions { 
-    height: 30em;
-    width: 30em;
+    height: 35em;
+    width: 35em;
+    margin: 0 auto;
+}
+
+#neighbourhood { 
+    height: 35em;
+    width: 35em;
+    margin: 0 auto;
 }
