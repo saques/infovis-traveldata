@@ -77,6 +77,15 @@ function placeMarkers(d){
 
     stopAll();
 
+    positions.filter(x => x.date == d).forEach(x => {
+        L.circle([x.lat, x.long], {
+            color: "black",
+            fillColor: "black",
+            fillOpacity: 0.5,
+            radius: 0.5
+        }).addTo(layerGroup)
+    });
+
     var currentDate = consumptions.filter(x => x.date == d);
 
     var pos = timeoutIDs.length - 1;
@@ -157,6 +166,7 @@ function buttonFastforwardPress(){
         placeMarkers(legalDates[currDate]);
     }
 }
+
 
 $(function() {
     setDateText();
